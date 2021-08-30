@@ -12,9 +12,7 @@ const server = new ApolloServer({
   context: ({ req }) => ({ req }),
 });
 
-const PORT = process.env.port || 5000;
-
 connectDb()
-  .then(() => server.listen({ port: PORT }))
+  .then(() => server.listen({ port: process.env.PORT || 5000 }))
   .then(({ url }) => console.log(`server running on ${url}`))
   .catch((err) => console.error(err));
